@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Expense Reimbursement Request</title>
+</head>
+
+<body>
+
+  <!--
+    MIS 3371 REFERENCE CASE STUDY
+    Week 4 — Comprehensive HTML Interface
+
+    PURPOSE:
+    Show ALL fields from the data dictionary in one reference page.
+
+    IMPORTANT:
+    Not every field is editable by the employee.
+
+    The page separates:
+    1. Employee-entered business data
+    2. Derived/reference data
+    3. System/control data
+    4. Review/audit data
+
+    Current course scope:
+    - Semantic HTML
+    - Forms
+    - Labels
+    - Appropriate controls
+    - Native constraints
+    - Data-field mapping
+
+    Not implemented yet:
+    - CSS
+    - JavaScript
+    - Conditional business-rule behavior
+    - API/backend
+    - Database persistence
+    - Authentication
+  -->
+
+
+  <header>
+
+    <h1>Expense Reimbursement Request</h1>
+
+    <p>
+      Submit one eligible business expense for reimbursement.
+    </p>
+
+    <p>
+      This reference page shows the complete transaction data model.
+      Some values are entered by the employee, while others will later
+      be created or controlled by the application.
+    </p>
+
+  </header>
+
+
+  <main>
+
+    <!-- =========================================================
+         SECTION 1 — TRANSACTION OVERVIEW
+         ========================================================= -->
+
+    <section>
+
+      <h2>Transaction Overview</h2>
+
+      <p>
+        The transaction begins when an employee prepares an expense request
+        and ends when the request is either completed or rejected.
+      </p>
+
+      <p>
+        Expenses greater than $75 require receipt evidence.
+        Expenses greater than $5,000 require director approval.
+      </p>
+
+    </section>
+
+
+    <!-- =========================================================
+         SECTION 2 — EMPLOYEE-ENTERED DATA
+         ========================================================= -->
+
+    <section>
+
+      <h2>Employee-Entered Information</h2>
+
+      <p>
+        These fields represent business data entered directly by the employee.
+      </p>
+
+
+      <form method="get">
+
+        <fieldset>
+
+          <legend>Expense Request</legend>
+
+
+          <!-- employeeId -->
+          <p>
+            <label for="employeeId">
+              Employee ID
+            </label>
+            <br>
+
+            <input
+              id="employeeId"
+              name="employeeId"
+              type="text"
+              required>
+          </p>
+
+
+          <!-- expenseDate -->
+          <p>
+            <label for="expenseDate">
+              Expense Date
+            </label>
+            <br>
+
+            <input
+              id="expenseDate"
+              name="expenseDate"
+              type="date"
+              required>
+          </p>
+
+
+          <!-- expenseCategory -->
+          <p>
+            <label for="expenseCategory">
+              Expense Category
+            </label>
+            <br>
+
+            <select
+              id="expenseCategory"
+              name="expenseCategory"
+              required>
+
+              <option value="">
+                Select a category
+              </option>
+
+              <option value="client-meal">
+                Client Meal
+              </option>
+
+              <option value="travel">
+                Travel
+              </option>
+
+              <option value="lodging">
+                Lodging
+              </option>
+
+              <option value="office-supplies">
+                Office Supplies
+              </option>
+
+              <option value="other">
+                Other
+              </option>
+
+            </select>
+          </p>
+
+
+          <!-- expenseAmount -->
+          <p>
+            <label for="expenseAmount">
+              Expense Amount (USD)
+            </label>
+            <br>
+
+            <input
+              id="expenseAmount"
+              name="expenseAmount"
+              type="number"
+              min="0.01"
+              step="0.01"
+              required>
+          </p>
+
+
+          <!-- description -->
+          <p>
+            <label for="description">
+              Business Description
+            </label>
+            <br>
+
+            <textarea
+              id="description"
+              name="description"
+              rows="5"
+              required></textarea>
+          </p>
+
+
+          <!-- receiptAttached -->
+          <p>
+
+            <input
+              id="receiptAttached"
+              name="receiptAttached"
+              type="checkbox">
+
+            <label for="receiptAttached">
+              Receipt evidence is attached
+            </label>
+
+          </p>
+
+
+        </fieldset>
+
+
+        <!--
+          The button is included because this is the employee submission form.
+
+          At Week 4:
+          - the browser can apply basic HTML validation
+          - no JavaScript exists yet
+          - no real application/backend submission exists yet
+        -->
+        <button type="submit">
+          Submit Request
+        </button>
+
+      </form>
+
+    </section>
+
+
+    <!-- =========================================================
+         SECTION 3 — DERIVED / REFERENCE DATA
+         ========================================================= -->
+
+    <section>
+
+      <h2>Derived and Reference Information</h2>
+
+      <p>
+        These values belong to the transaction, but the employee should not
+        manually control them. Later, the application will derive or look up
+        these values.
+      </p>
+
+
+      <dl>
+
+        <!-- employeeName -->
+        <dt>
+          <strong>Employee Name</strong>
+        </dt>
+
+        <dd>
+          Field: <code>employeeName</code><br>
+          Example: Jordan Lee<br>
+          Source later: employee directory / application lookup
+        </dd>
+
+
+        <!-- department -->
+        <dt>
+          <strong>Department</strong>
+        </dt>
+
+        <dd>
+          Field: <code>department</code><br>
+          Example: Marketing<br>
+          Source later: employee directory / application lookup
+        </dd>
+
+
+        <!-- managerId -->
+        <dt>
+          <strong>Manager ID</strong>
+        </dt>
+
+        <dd>
+          Field: <code>managerId</code><br>
+          Example: M2208<br>
+          Source later: organizational directory / application lookup
+        </dd>
+
+
+        <!-- receiptRequired -->
+        <dt>
+          <strong>Receipt Required</strong>
+        </dt>
+
+        <dd>
+          Field: <code>receiptRequired</code><br>
+          Example: true<br>
+          Business rule: true when expense amount is greater than $75
+        </dd>
+
+
+        <!-- directorApprovalRequired -->
+        <dt>
+          <strong>Director Approval Required</strong>
+        </dt>
+
+        <dd>
+          Field: <code>directorApprovalRequired</code><br>
+          Example: false<br>
+          Business rule: true when expense amount is greater than $5,000
+        </dd>
+
+      </dl>
+
+    </section>
+
+
+    <!-- =========================================================
+         SECTION 4 — SYSTEM / CONTROL DATA
+         ========================================================= -->
+
+    <section>
+
+      <h2>System-Controlled Transaction Data</h2>
+
+      <p>
+        These values are part of the official transaction record.
+        They should not be directly entered or changed by the employee.
+      </p>
+
+
+      <dl>
+
+        <!-- transactionId -->
+        <dt>
+          <strong>Transaction ID</strong>
+        </dt>
+
+        <dd>
+          Field: <code>transactionId</code><br>
+          Example: EXP-2026-00418<br>
+          Responsibility later: generated by application logic
+        </dd>
+
+
+        <!-- status -->
+        <dt>
+          <strong>Official Status</strong>
+        </dt>
+
+        <dd>
+          Field: <code>status</code><br>
+          Example: UnderReview<br>
+          Responsibility later: controlled by valid application state transitions
+        </dd>
+
+      </dl>
+
+    </section>
+
+
+    <!-- =========================================================
+         SECTION 5 — REVIEW / AUDIT DATA
+         ========================================================= -->
+
+    <section>
+
+      <h2>Review and Audit Information</h2>
+
+      <p>
+        These fields support approval decisions and transaction history.
+        They become relevant as the transaction moves through its workflow.
+      </p>
+
+
+      <dl>
+
+        <!-- submittedAt -->
+        <dt>
+          <strong>Submitted At</strong>
+        </dt>
+
+        <dd>
+          Field: <code>submittedAt</code><br>
+          Example: 2026-09-14T14:22:18-05:00<br>
+          Responsibility later: trusted application timestamp
+        </dd>
+
+
+        <!-- reviewedAt -->
+        <dt>
+          <strong>Manager Reviewed At</strong>
+        </dt>
+
+        <dd>
+          Field: <code>reviewedAt</code><br>
+          Example: 2026-09-15T10:04:11-05:00<br>
+          Responsibility later: trusted application timestamp
+        </dd>
+
+
+        <!-- directorReviewedAt -->
+        <dt>
+          <strong>Director Reviewed At</strong>
+        </dt>
+
+        <dd>
+          Field: <code>directorReviewedAt</code><br>
+          Example: not applicable for lower-value requests<br>
+          Responsibility later: trusted application timestamp
+        </dd>
+
+
+        <!-- completedAt -->
+        <dt>
+          <strong>Completed At</strong>
+        </dt>
+
+        <dd>
+          Field: <code>completedAt</code><br>
+          Example: 2026-09-18T16:40:03-05:00<br>
+          Responsibility later: trusted application timestamp
+        </dd>
+
+
+        <!-- rejectionReason -->
+        <dt>
+          <strong>Rejection Reason</strong>
+        </dt>
+
+        <dd>
+          Field: <code>rejectionReason</code><br>
+          Example: Expense is not reimbursable under policy.<br>
+          Source later: manager or director when rejecting a request
+        </dd>
+
+      </dl>
+
+    </section>
+
+
+    <!-- =========================================================
+         SECTION 6 — WHAT HAPPENS NEXT
+         ========================================================= -->
+
+    <section>
+
+      <h2>What Happens Next?</h2>
+
+      <p>
+        At Week 4, only the employee-entered portion is an active form.
+      </p>
+
+      <p>
+        Later course weeks will connect the same transaction data to:
+      </p>
+
+      <ul>
+        <li>CSS for presentation and responsive layout</li>
+        <li>JavaScript for browser behavior and immediate feedback</li>
+        <li>Application logic for trusted business rules</li>
+        <li>API requests and JSON</li>
+        <li>Cloud services</li>
+        <li>Persistent transaction storage</li>
+        <li>Audit history</li>
+      </ul>
+
+    </section>
+
+  </main>
+
+
+  <footer>
+
+    <p>
+      MIS 3371 — Instructor Reference Case Study
+    </p>
+
+  </footer>
+
+
+</body>
+</html>
