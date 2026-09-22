@@ -18,7 +18,10 @@ Use this page to find the example artifact that corresponds to the course work.
 | Which tier should own a responsibility | `03-system-design/responsibility-matrix.md` |
 | What Week 4 HTML should and should not do | `04-interface/week4-interface-notes.md` |
 | How to test the Week 4 form | `04-interface/week4-testing-checklist.md` |
-| Working Week 4 interface | `../src/index.html` |
+| How Week 5 CSS is organized and why | `05-styling/week5-css-responsive-notes.md` |
+| How to test responsive CSS | `05-styling/week5-testing-checklist.md` |
+| Current working interface | `../src/index.html` |
+| Current external stylesheet | `../src/styles.css` |
 
 ## Recommended Reading Order
 
@@ -35,6 +38,9 @@ Use this page to find the example artifact that corresponds to the course work.
 11. Responsibility matrix
 12. Week 4 interface notes
 13. Week 4 testing checklist
-14. `src/index.html`
+14. Week 5 CSS and responsive notes
+15. Week 5 testing checklist
+16. `src/index.html`
+17. `src/styles.css`
 
 Later artifacts should be justified by earlier design decisions.

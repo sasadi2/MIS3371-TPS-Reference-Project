@@ -2,39 +2,41 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Expense Reimbursement Request</title>
+
+  <!--
+    WEEK 5:
+    Connect the HTML page to an EXTERNAL CSS stylesheet.
+
+    HTML = structure + meaning
+    CSS  = presentation + layout
+  -->
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
   <!--
     MIS 3371 REFERENCE CASE STUDY
-    Week 4 — Comprehensive HTML Interface
+    Week 5 — Complete HTML + CSS Interface
 
-    PURPOSE:
-    Show ALL fields from the data dictionary in one reference page.
-
-    IMPORTANT:
-    Not every field is editable by the employee.
-
-    The page separates:
-    1. Employee-entered business data
-    2. Derived/reference data
-    3. System/control data
-    4. Review/audit data
+    This page continues the SAME transaction designed in Weeks 1–4.
 
     Current course scope:
     - Semantic HTML
-    - Forms
-    - Labels
-    - Appropriate controls
-    - Native constraints
-    - Data-field mapping
+    - Accessible form controls
+    - Native HTML constraints
+    - External CSS
+    - Reusable CSS classes
+    - Box model / spacing
+    - Flexbox
+    - Responsive layout
+    - Focus and hover feedback
 
     Not implemented yet:
-    - CSS
     - JavaScript
     - Conditional business-rule behavior
     - API/backend
@@ -43,30 +45,34 @@
   -->
 
 
-  <header>
+  <header class="site-header">
 
-    <h1>Expense Reimbursement Request</h1>
+    <div class="page-container">
 
-    <p>
-      Submit one eligible business expense for reimbursement.
-    </p>
+      <p class="eyebrow">
+        MIS 3371 • Reference Case Study
+      </p>
 
-    <p>
-      This reference page shows the complete transaction data model.
-      Some values are entered by the employee, while others will later
-      be created or controlled by the application.
-    </p>
+      <h1>Expense Reimbursement Request</h1>
+
+      <p class="header-summary">
+        Submit one eligible business expense for reimbursement.
+        This page shows the complete transaction data model while clearly
+        separating employee-entered data from system-controlled information.
+      </p>
+
+    </div>
 
   </header>
 
 
-  <main>
+  <main class="page-container">
 
     <!-- =========================================================
          SECTION 1 — TRANSACTION OVERVIEW
          ========================================================= -->
 
-    <section>
+    <section class="card">
 
       <h2>Transaction Overview</h2>
 
@@ -75,10 +81,11 @@
         and ends when the request is either completed or rejected.
       </p>
 
-      <p>
+      <div class="policy-note">
+        <strong>Reference business rules:</strong>
         Expenses greater than $75 require receipt evidence.
         Expenses greater than $5,000 require director approval.
-      </p>
+      </div>
 
     </section>
 
@@ -87,126 +94,167 @@
          SECTION 2 — EMPLOYEE-ENTERED DATA
          ========================================================= -->
 
-    <section>
+    <section class="card">
 
       <h2>Employee-Entered Information</h2>
 
-      <p>
+      <p class="section-intro">
         These fields represent business data entered directly by the employee.
+        Required fields are marked with an asterisk (*).
       </p>
 
 
-      <form method="get">
+      <form class="expense-form" method="get">
 
         <fieldset>
 
           <legend>Expense Request</legend>
 
 
-          <!-- employeeId -->
-          <p>
-            <label for="employeeId">
-              Employee ID
-            </label>
-            <br>
+          <!--
+            form-row uses Flexbox in styles.css.
 
-            <input
-              id="employeeId"
-              name="employeeId"
-              type="text"
-              required>
-          </p>
+            On wider screens, the two form-group elements can appear
+            next to each other.
 
+            On smaller screens, the media query stacks them vertically.
+          -->
+          <div class="form-row">
 
-          <!-- expenseDate -->
-          <p>
-            <label for="expenseDate">
-              Expense Date
-            </label>
-            <br>
+            <div class="form-group">
 
-            <input
-              id="expenseDate"
-              name="expenseDate"
-              type="date"
-              required>
-          </p>
+              <label for="employeeId">
+                Employee ID *
+              </label>
 
+              <input
+                id="employeeId"
+                name="employeeId"
+                type="text"
+                autocomplete="off"
+                required>
 
-          <!-- expenseCategory -->
-          <p>
-            <label for="expenseCategory">
-              Expense Category
-            </label>
-            <br>
+              <small class="field-help">
+                Enter your organization-issued employee identifier.
+              </small>
 
-            <select
-              id="expenseCategory"
-              name="expenseCategory"
-              required>
-
-              <option value="">
-                Select a category
-              </option>
-
-              <option value="client-meal">
-                Client Meal
-              </option>
-
-              <option value="travel">
-                Travel
-              </option>
-
-              <option value="lodging">
-                Lodging
-              </option>
-
-              <option value="office-supplies">
-                Office Supplies
-              </option>
-
-              <option value="other">
-                Other
-              </option>
-
-            </select>
-          </p>
+            </div>
 
 
-          <!-- expenseAmount -->
-          <p>
-            <label for="expenseAmount">
-              Expense Amount (USD)
-            </label>
-            <br>
+            <div class="form-group">
 
-            <input
-              id="expenseAmount"
-              name="expenseAmount"
-              type="number"
-              min="0.01"
-              step="0.01"
-              required>
-          </p>
+              <label for="expenseDate">
+                Expense Date *
+              </label>
+
+              <input
+                id="expenseDate"
+                name="expenseDate"
+                type="date"
+                required>
+
+              <small class="field-help">
+                Select the date on which the expense occurred.
+              </small>
+
+            </div>
+
+          </div>
 
 
-          <!-- description -->
-          <p>
+          <div class="form-row">
+
+            <div class="form-group">
+
+              <label for="expenseCategory">
+                Expense Category *
+              </label>
+
+              <select
+                id="expenseCategory"
+                name="expenseCategory"
+                required>
+
+                <option value="">
+                  Select a category
+                </option>
+
+                <option value="client-meal">
+                  Client Meal
+                </option>
+
+                <option value="travel">
+                  Travel
+                </option>
+
+                <option value="lodging">
+                  Lodging
+                </option>
+
+                <option value="office-supplies">
+                  Office Supplies
+                </option>
+
+                <option value="other">
+                  Other
+                </option>
+
+              </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label for="expenseAmount">
+                Expense Amount (USD) *
+              </label>
+
+              <input
+                id="expenseAmount"
+                name="expenseAmount"
+                type="number"
+                min="0.01"
+                step="0.01"
+                placeholder="0.00"
+                required>
+
+              <small class="field-help">
+                Amount must be greater than $0.00.
+              </small>
+
+            </div>
+
+          </div>
+
+
+          <div class="form-group">
+
             <label for="description">
-              Business Description
+              Business Description *
             </label>
-            <br>
 
             <textarea
               id="description"
               name="description"
               rows="5"
+              placeholder="Briefly explain the business purpose of this expense."
               required></textarea>
-          </p>
+
+          </div>
 
 
-          <!-- receiptAttached -->
-          <p>
+          <div class="checkbox-group">
+
+            <!--
+              receiptAttached is NOT universally required.
+
+              Business rule:
+              If expenseAmount > 75, receipt evidence is required.
+
+              JavaScript and later server/application logic will
+              implement this conditional rule.
+            -->
 
             <input
               id="receiptAttached"
@@ -217,23 +265,20 @@
               Receipt evidence is attached
             </label>
 
-          </p>
+          </div>
 
 
         </fieldset>
 
 
-        <!--
-          The button is included because this is the employee submission form.
-
-          At Week 4:
-          - the browser can apply basic HTML validation
-          - no JavaScript exists yet
-          - no real application/backend submission exists yet
-        -->
         <button type="submit">
           Submit Request
         </button>
+
+        <p class="form-note">
+          Week 5 note: this button currently demonstrates native HTML form
+          submission only. JavaScript behavior begins in Week 6.
+        </p>
 
       </form>
 
@@ -244,77 +289,107 @@
          SECTION 3 — DERIVED / REFERENCE DATA
          ========================================================= -->
 
-    <section>
+    <section class="card">
 
       <h2>Derived and Reference Information</h2>
 
-      <p>
+      <p class="section-intro">
         These values belong to the transaction, but the employee should not
         manually control them. Later, the application will derive or look up
         these values.
       </p>
 
 
-      <dl>
+      <dl class="data-list">
 
-        <!-- employeeName -->
-        <dt>
-          <strong>Employee Name</strong>
-        </dt>
+        <div class="data-item">
 
-        <dd>
-          Field: <code>employeeName</code><br>
-          Example: Jordan Lee<br>
-          Source later: employee directory / application lookup
-        </dd>
+          <dt>Employee Name</dt>
 
+          <dd>
+            <span class="data-label">Field</span>
+            <code>employeeName</code><br>
 
-        <!-- department -->
-        <dt>
-          <strong>Department</strong>
-        </dt>
+            <span class="data-label">Example</span>
+            Jordan Lee<br>
 
-        <dd>
-          Field: <code>department</code><br>
-          Example: Marketing<br>
-          Source later: employee directory / application lookup
-        </dd>
+            <span class="data-label">Source later</span>
+            Employee directory / application lookup
+          </dd>
+
+        </div>
 
 
-        <!-- managerId -->
-        <dt>
-          <strong>Manager ID</strong>
-        </dt>
+        <div class="data-item">
 
-        <dd>
-          Field: <code>managerId</code><br>
-          Example: M2208<br>
-          Source later: organizational directory / application lookup
-        </dd>
+          <dt>Department</dt>
 
+          <dd>
+            <span class="data-label">Field</span>
+            <code>department</code><br>
 
-        <!-- receiptRequired -->
-        <dt>
-          <strong>Receipt Required</strong>
-        </dt>
+            <span class="data-label">Example</span>
+            Marketing<br>
 
-        <dd>
-          Field: <code>receiptRequired</code><br>
-          Example: true<br>
-          Business rule: true when expense amount is greater than $75
-        </dd>
+            <span class="data-label">Source later</span>
+            Employee directory / application lookup
+          </dd>
+
+        </div>
 
 
-        <!-- directorApprovalRequired -->
-        <dt>
-          <strong>Director Approval Required</strong>
-        </dt>
+        <div class="data-item">
 
-        <dd>
-          Field: <code>directorApprovalRequired</code><br>
-          Example: false<br>
-          Business rule: true when expense amount is greater than $5,000
-        </dd>
+          <dt>Manager ID</dt>
+
+          <dd>
+            <span class="data-label">Field</span>
+            <code>managerId</code><br>
+
+            <span class="data-label">Example</span>
+            M2208<br>
+
+            <span class="data-label">Source later</span>
+            Organizational directory / application lookup
+          </dd>
+
+        </div>
+
+
+        <div class="data-item">
+
+          <dt>Receipt Required</dt>
+
+          <dd>
+            <span class="data-label">Field</span>
+            <code>receiptRequired</code><br>
+
+            <span class="data-label">Example</span>
+            true<br>
+
+            <span class="data-label">Business rule</span>
+            True when expense amount is greater than $75
+          </dd>
+
+        </div>
+
+
+        <div class="data-item">
+
+          <dt>Director Approval Required</dt>
+
+          <dd>
+            <span class="data-label">Field</span>
+            <code>directorApprovalRequired</code><br>
+
+            <span class="data-label">Example</span>
+            false<br>
+
+            <span class="data-label">Business rule</span>
+            True when expense amount is greater than $5,000
+          </dd>
+
+        </div>
 
       </dl>
 
@@ -325,40 +400,52 @@
          SECTION 4 — SYSTEM / CONTROL DATA
          ========================================================= -->
 
-    <section>
+    <section class="card">
 
       <h2>System-Controlled Transaction Data</h2>
 
-      <p>
+      <p class="section-intro">
         These values are part of the official transaction record.
         They should not be directly entered or changed by the employee.
       </p>
 
 
-      <dl>
+      <dl class="data-list">
 
-        <!-- transactionId -->
-        <dt>
-          <strong>Transaction ID</strong>
-        </dt>
+        <div class="data-item">
 
-        <dd>
-          Field: <code>transactionId</code><br>
-          Example: EXP-2026-00418<br>
-          Responsibility later: generated by application logic
-        </dd>
+          <dt>Transaction ID</dt>
+
+          <dd>
+            <span class="data-label">Field</span>
+            <code>transactionId</code><br>
+
+            <span class="data-label">Example</span>
+            EXP-2026-00418<br>
+
+            <span class="data-label">Responsibility later</span>
+            Generated by application logic
+          </dd>
+
+        </div>
 
 
-        <!-- status -->
-        <dt>
-          <strong>Official Status</strong>
-        </dt>
+        <div class="data-item">
 
-        <dd>
-          Field: <code>status</code><br>
-          Example: UnderReview<br>
-          Responsibility later: controlled by valid application state transitions
-        </dd>
+          <dt>Official Status</dt>
+
+          <dd>
+            <span class="data-label">Field</span>
+            <code>status</code><br>
+
+            <span class="data-label">Example</span>
+            <span class="status-badge">Under Review</span><br>
+
+            <span class="data-label">Responsibility later</span>
+            Controlled by valid application state transitions
+          </dd>
+
+        </div>
 
       </dl>
 
@@ -369,76 +456,106 @@
          SECTION 5 — REVIEW / AUDIT DATA
          ========================================================= -->
 
-    <section>
+    <section class="card">
 
       <h2>Review and Audit Information</h2>
 
-      <p>
+      <p class="section-intro">
         These fields support approval decisions and transaction history.
         They become relevant as the transaction moves through its workflow.
       </p>
 
 
-      <dl>
+      <dl class="data-list">
 
-        <!-- submittedAt -->
-        <dt>
-          <strong>Submitted At</strong>
-        </dt>
+        <div class="data-item">
 
-        <dd>
-          Field: <code>submittedAt</code><br>
-          Example: 2026-09-14T14:22:18-05:00<br>
-          Responsibility later: trusted application timestamp
-        </dd>
+          <dt>Submitted At</dt>
 
+          <dd>
+            <span class="data-label">Field</span>
+            <code>submittedAt</code><br>
 
-        <!-- reviewedAt -->
-        <dt>
-          <strong>Manager Reviewed At</strong>
-        </dt>
+            <span class="data-label">Example</span>
+            2026-09-14T14:22:18-05:00<br>
 
-        <dd>
-          Field: <code>reviewedAt</code><br>
-          Example: 2026-09-15T10:04:11-05:00<br>
-          Responsibility later: trusted application timestamp
-        </dd>
+            <span class="data-label">Responsibility later</span>
+            Trusted application timestamp
+          </dd>
+
+        </div>
 
 
-        <!-- directorReviewedAt -->
-        <dt>
-          <strong>Director Reviewed At</strong>
-        </dt>
+        <div class="data-item">
 
-        <dd>
-          Field: <code>directorReviewedAt</code><br>
-          Example: not applicable for lower-value requests<br>
-          Responsibility later: trusted application timestamp
-        </dd>
+          <dt>Manager Reviewed At</dt>
 
+          <dd>
+            <span class="data-label">Field</span>
+            <code>reviewedAt</code><br>
 
-        <!-- completedAt -->
-        <dt>
-          <strong>Completed At</strong>
-        </dt>
+            <span class="data-label">Example</span>
+            2026-09-15T10:04:11-05:00<br>
 
-        <dd>
-          Field: <code>completedAt</code><br>
-          Example: 2026-09-18T16:40:03-05:00<br>
-          Responsibility later: trusted application timestamp
-        </dd>
+            <span class="data-label">Responsibility later</span>
+            Trusted application timestamp
+          </dd>
+
+        </div>
 
 
-        <!-- rejectionReason -->
-        <dt>
-          <strong>Rejection Reason</strong>
-        </dt>
+        <div class="data-item">
 
-        <dd>
-          Field: <code>rejectionReason</code><br>
-          Example: Expense is not reimbursable under policy.<br>
-          Source later: manager or director when rejecting a request
-        </dd>
+          <dt>Director Reviewed At</dt>
+
+          <dd>
+            <span class="data-label">Field</span>
+            <code>directorReviewedAt</code><br>
+
+            <span class="data-label">Example</span>
+            Not applicable for lower-value requests<br>
+
+            <span class="data-label">Responsibility later</span>
+            Trusted application timestamp
+          </dd>
+
+        </div>
+
+
+        <div class="data-item">
+
+          <dt>Completed At</dt>
+
+          <dd>
+            <span class="data-label">Field</span>
+            <code>completedAt</code><br>
+
+            <span class="data-label">Example</span>
+            2026-09-18T16:40:03-05:00<br>
+
+            <span class="data-label">Responsibility later</span>
+            Trusted application timestamp
+          </dd>
+
+        </div>
+
+
+        <div class="data-item">
+
+          <dt>Rejection Reason</dt>
+
+          <dd>
+            <span class="data-label">Field</span>
+            <code>rejectionReason</code><br>
+
+            <span class="data-label">Example</span>
+            Expense is not reimbursable under policy.<br>
+
+            <span class="data-label">Source later</span>
+            Manager or director when rejecting a request
+          </dd>
+
+        </div>
 
       </dl>
 
@@ -449,26 +566,32 @@
          SECTION 6 — WHAT HAPPENS NEXT
          ========================================================= -->
 
-    <section>
+    <section class="card">
 
       <h2>What Happens Next?</h2>
 
       <p>
-        At Week 4, only the employee-entered portion is an active form.
+        At the end of Week 5, the client-side interface should be
+        structurally complete, readable, and responsive.
       </p>
 
-      <p>
-        Later course weeks will connect the same transaction data to:
-      </p>
+      <ul class="next-steps">
 
-      <ul>
-        <li>CSS for presentation and responsive layout</li>
-        <li>JavaScript for browser behavior and immediate feedback</li>
-        <li>Application logic for trusted business rules</li>
-        <li>API requests and JSON</li>
-        <li>Cloud services</li>
-        <li>Persistent transaction storage</li>
-        <li>Audit history</li>
+        <li>
+          <strong>Week 6:</strong>
+          JavaScript fundamentals, DOM access, and events
+        </li>
+
+        <li>
+          <strong>Week 7:</strong>
+          Client-side validation and business-rule behavior
+        </li>
+
+        <li>
+          <strong>Later:</strong>
+          JSON, Fetch, API integration, AWS, persistence, and audit history
+        </li>
+
       </ul>
 
     </section>
@@ -476,11 +599,15 @@
   </main>
 
 
-  <footer>
+  <footer class="site-footer">
 
-    <p>
-      MIS 3371 — Instructor Reference Case Study
-    </p>
+    <div class="page-container">
+
+      <p>
+        MIS 3371 — Instructor Reference Case Study
+      </p>
+
+    </div>
 
   </footer>
 

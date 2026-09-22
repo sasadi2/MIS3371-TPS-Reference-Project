@@ -1,0 +1,394 @@
+/*
+  MIS 3371 — WEEK 5 REFERENCE STYLESHEET
+
+  Teaching focus:
+  - External CSS
+  - Selectors
+  - Classes
+  - Properties + values
+  - Box model
+  - Typography
+  - Spacing
+  - Form styling
+  - Flexbox
+  - Responsive layout
+  - :focus and :hover
+
+  No JavaScript is used in Week 5.
+*/
+
+
+/* ---------------------------------------------------------
+   1. BASE PAGE STYLES
+   --------------------------------------------------------- */
+
+/*
+  box-sizing makes width calculations easier to understand:
+  declared width includes content + padding + border.
+*/
+* {
+  box-sizing: border-box;
+}
+
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+  color: #252525;
+  background: #f4f5f7;
+}
+
+
+/*
+  Reusable page container:
+  keeps content readable on large screens,
+  but still allows it to shrink on smaller screens.
+*/
+.page-container {
+  width: 92%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+
+/* ---------------------------------------------------------
+   2. HEADER
+   --------------------------------------------------------- */
+
+.site-header {
+  padding: 36px 0;
+  color: #ffffff;
+  background: #c8102e;
+}
+
+
+.site-header h1 {
+  margin: 4px 0 8px;
+  font-size: 2rem;
+}
+
+
+.eyebrow {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+
+.header-summary {
+  max-width: 760px;
+  margin: 0;
+}
+
+
+/* ---------------------------------------------------------
+   3. MAIN CONTENT + CARDS
+   --------------------------------------------------------- */
+
+main {
+  padding: 24px 0 40px;
+}
+
+
+.card {
+  margin-bottom: 22px;
+  padding: 24px;
+  background: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+
+.card h2 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  color: #8b0f26;
+}
+
+
+.section-intro {
+  margin-top: 0;
+  color: #555555;
+}
+
+
+.policy-note {
+  margin-top: 16px;
+  padding: 14px 16px;
+  border-left: 4px solid #c8102e;
+  background: #fff5f6;
+}
+
+
+/* ---------------------------------------------------------
+   4. FORM
+   --------------------------------------------------------- */
+
+.expense-form {
+  margin-top: 20px;
+}
+
+
+fieldset {
+  margin: 0 0 20px;
+  padding: 20px;
+  border: 1px solid #cccccc;
+  border-radius: 8px;
+}
+
+
+legend {
+  padding: 0 8px;
+  font-weight: 700;
+  color: #333333;
+}
+
+
+/*
+  Flexbox allows related fields to sit side by side.
+  The media query later stacks them on narrow screens.
+*/
+.form-row {
+  display: flex;
+  gap: 18px;
+}
+
+
+.form-group {
+  flex: 1;
+  margin-bottom: 18px;
+}
+
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 700;
+}
+
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 10px 12px;
+  font: inherit;
+  color: #252525;
+  background: #ffffff;
+  border: 1px solid #aaaaaa;
+  border-radius: 6px;
+}
+
+
+textarea {
+  resize: vertical;
+}
+
+
+/*
+  Visible keyboard focus is important for usability
+  and accessibility.
+*/
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 3px solid rgba(200, 16, 46, 0.18);
+  border-color: #c8102e;
+}
+
+
+.field-help {
+  display: block;
+  margin-top: 5px;
+  color: #666666;
+}
+
+
+/*
+  Checkbox controls should not inherit width: 100%.
+*/
+.checkbox-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 4px 0 6px;
+}
+
+
+.checkbox-group input {
+  width: auto;
+  margin-top: 5px;
+}
+
+
+.checkbox-group label {
+  margin: 0;
+  font-weight: 400;
+}
+
+
+button {
+  padding: 11px 20px;
+  font: inherit;
+  font-weight: 700;
+  color: #ffffff;
+  background: #c8102e;
+  border: 2px solid #c8102e;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+
+button:hover {
+  background: #980c23;
+  border-color: #980c23;
+}
+
+
+button:focus {
+  outline: 3px solid rgba(200, 16, 46, 0.25);
+  outline-offset: 2px;
+}
+
+
+.form-note {
+  margin: 10px 0 0;
+  font-size: 0.9rem;
+  color: #666666;
+}
+
+
+/* ---------------------------------------------------------
+   5. REFERENCE / SYSTEM DATA
+   --------------------------------------------------------- */
+
+.data-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 18px 0 0;
+}
+
+
+.data-item {
+  flex: 1 1 280px;
+  padding: 16px;
+  background: #fafafa;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+}
+
+
+.data-item dt {
+  margin-bottom: 8px;
+  font-weight: 700;
+  color: #333333;
+}
+
+
+.data-item dd {
+  margin: 0;
+  color: #4d4d4d;
+}
+
+
+.data-label {
+  display: inline-block;
+  min-width: 118px;
+  margin-top: 4px;
+  font-weight: 700;
+  color: #555555;
+}
+
+
+code {
+  padding: 2px 5px;
+  background: #eeeeee;
+  border-radius: 4px;
+}
+
+
+.status-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #6e4b00;
+  background: #fff3cd;
+  border-radius: 999px;
+}
+
+
+/* ---------------------------------------------------------
+   6. NEXT STEPS + FOOTER
+   --------------------------------------------------------- */
+
+.next-steps {
+  padding-left: 22px;
+}
+
+
+.next-steps li {
+  margin-bottom: 8px;
+}
+
+
+.site-footer {
+  padding: 20px 0;
+  color: #ffffff;
+  background: #333333;
+}
+
+
+.site-footer p {
+  margin: 0;
+}
+
+
+/* ---------------------------------------------------------
+   7. RESPONSIVE LAYOUT
+   --------------------------------------------------------- */
+
+/*
+  At 700px and below:
+  - two-column form rows stack vertically
+  - button becomes full width
+  - spacing is reduced slightly
+*/
+@media (max-width: 700px) {
+
+  .site-header {
+    padding: 28px 0;
+  }
+
+
+  .site-header h1 {
+    font-size: 1.6rem;
+  }
+
+
+  .card {
+    padding: 18px;
+  }
+
+
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+
+
+  button {
+    width: 100%;
+  }
+
+
+  .data-item {
+    flex-basis: 100%;
+  }
+
+}

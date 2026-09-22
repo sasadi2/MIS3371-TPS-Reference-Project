@@ -17,7 +17,7 @@ This reference project uses an **Expense Reimbursement System** to show how the 
 
 The repository will grow as the course progresses. Students are not expected to implement material that has not yet been covered in class.
 
-### Current release: through Week 4
+### Current release: through Week 5
 
 This version includes:
 
@@ -34,8 +34,14 @@ This version includes:
 - Semantic HTML transaction interface
 - Accessible form controls
 - Native browser constraints and basic testing
+- External CSS stylesheet
+- Reusable CSS classes
+- Form and content styling
+- Flexbox layout
+- Responsive behavior
+- Focus and hover feedback
 
-**Not implemented yet:** CSS, JavaScript, API calls, backend logic, database persistence, authentication, AWS deployment.
+**Not implemented yet:** JavaScript, API calls, backend logic, database persistence, authentication, AWS deployment.
 
 ---
 
@@ -73,9 +79,11 @@ MIS3371-TPS-Reference-Project/
 │   ├── 01-project-foundation/
 │   ├── 02-requirements/
 │   ├── 03-system-design/
-│   └── 04-interface/
+│   ├── 04-interface/
+│   └── 05-styling/
 └── src/
-    └── index.html
+    ├── index.html
+    └── styles.css
 ```
 
 ---
@@ -104,7 +112,7 @@ A useful quality check is:
 | Requirements | Stakeholders, requirements, user stories, acceptance criteria, rules | Complete |
 | Week 3 Design | Workflow, states, data dictionary, architecture, responsibility matrix | Complete |
 | Week 4 Interface | Semantic HTML + accessible form | Complete |
-| Week 5 | CSS + responsive user interface | Not released yet |
+| Week 5 | CSS + responsive user interface | Complete |
 | Week 6–8 | JavaScript behavior, validation, business rules, testing | Not released yet |
 | M3 | HTTP/JSON/Fetch + API/cloud integration | Not released yet |
 | M4 | Release candidate, deployment, testing, final documentation | Not released yet |
@@ -157,23 +165,29 @@ The ID remains stable while status changes.
 
 ---
 
-## Week 4 Implementation Status
+## Week 5 Implementation Status
 
-The current `src/index.html` intentionally contains:
+The current `src/index.html` and `src/styles.css` now demonstrate:
 
 - Semantic page structure
-- A form
-- Visible labels
-- Appropriate HTML controls
-- `id` and `name` attributes
+- A complete employee transaction form
+- All data-dictionary fields represented on the page
+- Visible labels and appropriate controls
 - Native constraints such as `required`, `min`, and `step`
-- `fieldset` and `legend`
+- External CSS
+- Reusable classes
+- Box-model spacing
+- Styled form controls
+- Flexbox layout
+- Responsive behavior
+- Visible focus and hover feedback
 
 The current implementation intentionally does **not** contain:
 
-- Styling
 - JavaScript behavior
 - Conditional business-rule enforcement
 - API integration
 - Persistence
 - Authentication
+
+The project should now **look substantially complete**, even though application behavior has not been implemented yet.
