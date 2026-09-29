@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Expense Reimbursement Request</title>
+  <script src="app.js" defer></script>
 
   <!--
     WEEK 5:
@@ -104,7 +105,7 @@
       </p>
 
 
-      <form class="expense-form" method="get">
+      <form id="expenseForm" class="expense-form" method="get">
 
         <fieldset>
 
@@ -222,6 +223,8 @@
               <small class="field-help">
                 Amount must be greater than $0.00.
               </small>
+
+              <p id="approvalMessage" class="decision-message" aria-live="polite"></p>
 
             </div>
 

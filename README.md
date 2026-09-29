@@ -17,7 +17,7 @@ This reference project uses an **Expense Reimbursement System** to show how the 
 
 The repository will grow as the course progresses. Students are not expected to implement material that has not yet been covered in class.
 
-### Current release: through Week 5
+### Current release: through Week 6
 
 This version includes:
 
@@ -41,7 +41,7 @@ This version includes:
 - Responsive behavior
 - Focus and hover feedback
 
-**Not implemented yet:** JavaScript, API calls, backend logic, database persistence, authentication, AWS deployment.
+**Not implemented yet:** complete client-side validation, API calls, backend logic, database persistence, authentication, AWS deployment.
 
 ---
 
@@ -113,7 +113,8 @@ A useful quality check is:
 | Week 3 Design | Workflow, states, data dictionary, architecture, responsibility matrix | Complete |
 | Week 4 Interface | Semantic HTML + accessible form | Complete |
 | Week 5 | CSS + responsive user interface | Complete |
-| Week 6–8 | JavaScript behavior, validation, business rules, testing | Not released yet |
+| Week 6 | JavaScript fundamentals, DOM, events, and first business-rule behavior | Complete |
+| Week 7–8 | Conditional validation, additional business rules, integration, and testing | Not released yet |
 | M3 | HTTP/JSON/Fetch + API/cloud integration | Not released yet |
 | M4 | Release candidate, deployment, testing, final documentation | Not released yet |
 
@@ -165,9 +166,9 @@ The ID remains stable while status changes.
 
 ---
 
-## Week 5 Implementation Status
+## Week 6 Implementation Status
 
-The current `src/index.html` and `src/styles.css` now demonstrate:
+The current `src/index.html`, `src/styles.css`, and `src/app.js` now demonstrate:
 
 - Semantic page structure
 - A complete employee transaction form
@@ -181,13 +182,32 @@ The current `src/index.html` and `src/styles.css` now demonstrate:
 - Flexbox layout
 - Responsive behavior
 - Visible focus and hover feedback
+- External JavaScript connected with `defer`
+- DOM selection and form-value reading
+- Numeric conversion with `Number(...)`
+- A reusable approval-rule function
+- An `input` event listener
+- A visible approval-path message updated with `textContent`
 
 The current implementation intentionally does **not** contain:
 
-- JavaScript behavior
-- Conditional business-rule enforcement
+- Complete conditional business-rule enforcement
 - API integration
 - Persistence
 - Authentication
 
-The project should now **look substantially complete**, even though application behavior has not been implemented yet.
+The project should now **look substantially complete and demonstrate its first browser-side behavior**, while still remaining intentionally incomplete as a full transaction-processing application.
+
+
+## Week 6 JavaScript Status
+
+The current `src/app.js` demonstrates one small end-to-end browser behavior:
+
+1. JavaScript selects the expense amount field.
+2. It reads the current form value.
+3. It converts the string value to a number.
+4. A reusable function evaluates the $5,000 approval rule.
+5. The page updates a visible message using `textContent`.
+6. The Week 6 demo intercepts form submission because no backend is connected yet.
+
+This is intentionally limited. Full conditional validation and additional business-rule behavior continue in Week 7.

@@ -40,7 +40,19 @@ Use this page to find the example artifact that corresponds to the course work.
 13. Week 4 testing checklist
 14. Week 5 CSS and responsive notes
 15. Week 5 testing checklist
-16. `src/index.html`
-17. `src/styles.css`
+16. Week 6 JavaScript behavior notes
+17. Week 6 testing checklist
+18. `src/index.html`
+19. `src/styles.css`
+20. `src/app.js`
 
 Later artifacts should be justified by earlier design decisions.
+
+
+## Week 6 JavaScript References
+
+| Question | File |
+|---|---|
+| How is JavaScript connected and scoped in Week 6? | `06-javascript/week6-javascript-behavior-notes.md` |
+| How should the Week 6 behavior be tested? | `06-javascript/week6-testing-checklist.md` |
+| Current browser behavior | `../src/app.js` |

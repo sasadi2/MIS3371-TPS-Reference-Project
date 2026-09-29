@@ -392,3 +392,15 @@ code {
   }
 
 }
+
+
+/* ---------------------------------------------------------
+   WEEK 6 — JAVASCRIPT-GENERATED MESSAGE
+   --------------------------------------------------------- */
+
+.decision-message {
+  min-height: 1.5em;
+  margin: 6px 0 0;
+  font-weight: 700;
+  color: #8b0f26;
+}
