@@ -22,7 +22,7 @@
 
   <!--
     MIS 3371 REFERENCE CASE STUDY
-    Week 5 — Complete HTML + CSS Interface
+    Week 7 — HTML + CSS + JavaScript Validation Interface
 
     This page continues the SAME transaction designed in Weeks 1–4.
 
@@ -37,9 +37,14 @@
     - Responsive layout
     - Focus and hover feedback
 
+    Current Week 7 scope also includes:
+    - JavaScript business-rule functions
+    - DOM events and messages
+    - Conditional receipt validation
+    - Submit-time browser checks
+
     Not implemented yet:
-    - JavaScript
-    - Conditional business-rule behavior
+    - Trusted server/application enforcement
     - API/backend
     - Database persistence
     - Authentication
@@ -270,6 +275,8 @@
 
           </div>
 
+          <p id="receiptMessage" class="validation-message" aria-live="polite"></p>
+
 
         </fieldset>
 
@@ -278,9 +285,11 @@
           Submit Request
         </button>
 
+        <p id="formMessage" class="form-message" aria-live="polite"></p>
+
         <p class="form-note">
-          Week 5 note: this button currently demonstrates native HTML form
-          submission only. JavaScript behavior begins in Week 6.
+          Week 7 note: browser-side JavaScript now checks the conditional receipt rule
+          before showing a successful client-side result. Trusted server enforcement comes later.
         </p>
 
       </form>

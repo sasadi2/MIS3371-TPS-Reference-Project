@@ -22,6 +22,9 @@ Use this page to find the example artifact that corresponds to the course work.
 | How to test responsive CSS | `05-styling/week5-testing-checklist.md` |
 | Current working interface | `../src/index.html` |
 | Current external stylesheet | `../src/styles.css` |
+| How Week 7 validation/business rules work | `07-validation-business-rules/week7-validation-business-rules-notes.md` |
+| Week 7 validation test cases | `07-validation-business-rules/week7-testing-checklist.md` |
+| Current JavaScript implementation | `../src/app.js` |
 
 ## Recommended Reading Order
 
@@ -56,3 +59,10 @@ Later artifacts should be justified by earlier design decisions.
 | How is JavaScript connected and scoped in Week 6? | `06-javascript/week6-javascript-behavior-notes.md` |
 | How should the Week 6 behavior be tested? | `06-javascript/week6-testing-checklist.md` |
 | Current browser behavior | `../src/app.js` |
+
+
+## Week 7 reading order
+
+1. `07-validation-business-rules/week7-validation-business-rules-notes.md`
+2. `src/app.js`
+3. `07-validation-business-rules/week7-testing-checklist.md`

@@ -404,3 +404,36 @@ code {
   font-weight: 700;
   color: #8b0f26;
 }
+
+
+/* ---------------------------------------------------------
+   WEEK 7 — VALIDATION + BUSINESS-RULE MESSAGES
+   --------------------------------------------------------- */
+
+.validation-message,
+.form-message {
+  min-height: 1.5em;
+  margin: 8px 0 0;
+  font-weight: 700;
+}
+
+.form-message {
+  margin: 12px 0 0;
+  padding: 10px 12px;
+  border-radius: 6px;
+}
+
+.error-message {
+  color: #8b0f26;
+  background: #fff1f3;
+}
+
+.success-message {
+  color: #1f6b45;
+  background: #eef8f2;
+}
+
+.info-message {
+  color: #315f8a;
+  background: #eef5fb;
+}

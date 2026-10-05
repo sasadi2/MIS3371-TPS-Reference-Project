@@ -17,7 +17,7 @@ This reference project uses an **Expense Reimbursement System** to show how the 
 
 The repository will grow as the course progresses. Students are not expected to implement material that has not yet been covered in class.
 
-### Current release: through Week 6
+### Current release: through Week 7
 
 This version includes:
 
@@ -41,7 +41,7 @@ This version includes:
 - Responsive behavior
 - Focus and hover feedback
 
-**Not implemented yet:** complete client-side validation, API calls, backend logic, database persistence, authentication, AWS deployment.
+**Not implemented yet:** API calls, trusted backend enforcement, database persistence, authentication, AWS deployment.
 
 ---
 
@@ -80,10 +80,13 @@ MIS3371-TPS-Reference-Project/
 │   ├── 02-requirements/
 │   ├── 03-system-design/
 │   ├── 04-interface/
-│   └── 05-styling/
+│   ├── 05-styling/
+│   ├── 06-javascript/
+│   └── 07-validation-business-rules/
 └── src/
     ├── index.html
-    └── styles.css
+    ├── styles.css
+    └── app.js
 ```
 
 ---
@@ -114,9 +117,31 @@ A useful quality check is:
 | Week 4 Interface | Semantic HTML + accessible form | Complete |
 | Week 5 | CSS + responsive user interface | Complete |
 | Week 6 | JavaScript fundamentals, DOM, events, and first business-rule behavior | Complete |
-| Week 7–8 | Conditional validation, additional business rules, integration, and testing | Not released yet |
-| M3 | HTTP/JSON/Fetch + API/cloud integration | Not released yet |
-| M4 | Release candidate, deployment, testing, final documentation | Not released yet |
+| Week 7 | Conditional validation + additional business-rule behavior | Complete |
+| Week 8 | Finish/test client side + Milestone 2 + JSON/HTTP/API introduction | Not released yet |
+| Week 9 | REST + `fetch()` + local backend concept + AWS Lambda/API Gateway | Not released yet |
+| Week 10 | DynamoDB persistence: save + retrieve transactions | Not released yet |
+| Week 11 | End-to-end integration and debugging | Not released yet |
+| Week 12 | Final testing + release candidate | Not released yet |
+| Week 13 | Buffer + presentation preparation | Not released yet |
+| Weeks 14–15 | Final project presentations (4 sessions) | Not released yet |
+
+
+---
+
+## Planned Second-Half Roadmap
+
+The remaining course moves quickly from the completed client interface into a small serverless transaction-processing architecture:
+
+- **Week 8:** finish and test the client-side system, complete Milestone 2, then introduce JSON, HTTP, REST, and a first `fetch()` example.
+- **Week 9:** connect the browser to a backend concept, then move that logic into **AWS Lambda + API Gateway**.
+- **Week 10:** add **DynamoDB** so teams can save and retrieve official transaction records.
+- **Week 11:** complete end-to-end integration and debugging.
+- **Week 12:** final testing and release-candidate work.
+- **Week 13:** buffer and presentation preparation.
+- **Weeks 14–15:** four final project presentation sessions.
+
+The scope stays intentionally small: one main transaction path, one working API flow, and one persistent transaction record are more valuable than many partially implemented features.
 
 ---
 
@@ -166,7 +191,7 @@ The ID remains stable while status changes.
 
 ---
 
-## Week 6 Implementation Status
+## Week 7 Implementation Status
 
 The current `src/index.html`, `src/styles.css`, and `src/app.js` now demonstrate:
 
@@ -186,12 +211,15 @@ The current `src/index.html`, `src/styles.css`, and `src/app.js` now demonstrate
 - DOM selection and form-value reading
 - Numeric conversion with `Number(...)`
 - A reusable approval-rule function
-- An `input` event listener
-- A visible approval-path message updated with `textContent`
+- `input`, `change`, and `submit` event listeners
+- Visible approval, receipt, and submit-result messages
+- Conditional receipt rule based on amount + checkbox state
+- Submit-time browser validation with an early `return`
+- Boundary testing for `$75` and `$5,000` rules
 
 The current implementation intentionally does **not** contain:
 
-- Complete conditional business-rule enforcement
+- Trusted server/application enforcement of business rules
 - API integration
 - Persistence
 - Authentication
@@ -199,15 +227,15 @@ The current implementation intentionally does **not** contain:
 The project should now **look substantially complete and demonstrate its first browser-side behavior**, while still remaining intentionally incomplete as a full transaction-processing application.
 
 
-## Week 6 JavaScript Status
+## Week 7 Validation Status
 
-The current `src/app.js` demonstrates one small end-to-end browser behavior:
+The current `src/app.js` demonstrates a complete browser-side validation flow for two related business rules:
 
-1. JavaScript selects the expense amount field.
-2. It reads the current form value.
-3. It converts the string value to a number.
-4. A reusable function evaluates the $5,000 approval rule.
-5. The page updates a visible message using `textContent`.
-6. The Week 6 demo intercepts form submission because no backend is connected yet.
+1. JavaScript reads the expense amount and receipt checkbox.
+2. Reusable functions evaluate the `$75` receipt rule and `$5,000` approval rule.
+3. `input` and `change` events keep visible feedback current.
+4. The `submit` handler checks the conditional receipt requirement.
+5. If the rule fails, the browser-side flow stops with an actionable message.
+6. If checks pass, the page explains which approval path would apply.
 
-This is intentionally limited. Full conditional validation and additional business-rule behavior continue in Week 7.
+This remains client-side behavior. The authoritative application/server tier must enforce the same critical rules later.
