@@ -9,7 +9,7 @@ Continue your team's existing transaction system. Do not introduce a second HTML
 - `src/styles.css`: the existing style sheet, unchanged this week.
 - `src/app.js`: existing live UI feedback plus one async submit listener with `fetch()`.
 - `backend/backend.js`: existing `processExpense(expense)` validates all six reference inputs and returns a result.
-- `server/server.js`: `express.json()` + `express.static()` + one `POST /api/expenses` route. No duplicated business rules.
+- `backend/server.js`: `express.json()` + `express.static()` + one `POST /api/expenses` route. No duplicated business rules.
 - `package.json`: Express dependency and `npm start` / `npm run test:backend` commands.
 - `demo-requests/`: two manual JSON requests for API bypass/testing.
 
